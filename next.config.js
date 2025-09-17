@@ -2,15 +2,13 @@
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 const prod = process.env.NODE_ENV === 'production'
-const isExport = process.env.NEXT_EXPORT === 'true' 
 
 const nextConfig = {
   reactStrictMode: true,
   compress: true,
-  output: isExport ? "export" : undefined, // only set output when exporting
   pwa: {
     dest: "public",
-    disable: !prod || isExport, // disable PWA for static export
+    disable: !prod,
     register: true,
     skipWaiting: true,
     runtimeCaching,
